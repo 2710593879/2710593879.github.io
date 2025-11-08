@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="HUAPLE — 极简设计，高性能手机。" />
+  <style>
+    /* Mobile-first 简洁样式 */
+    :root{
+      --accent:#0066ff;
+      --bg:#f7f9fc;
+      --text:#111827;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:48px;
+    }
+
+    /* Header */
+    .header{
+      position:sticky;
+      top:0;
+      backdrop-filter: blur(6px);
+      background:rgba(255,255,255,0.7);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 14px;
+      border-bottom:1px solid rgba(0,0,0,0.04);
+      z-index:50;
+    }
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{
+      width:38px;height:38px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#00c2ff);
+      display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+      box-shadow:0 4px 14px rgba(0,102,255,0.12);
+    }
+    .brand h1{font-size:16px;margin:0;}
+    .nav{display:flex;gap:12px;align-items:center}
+    .btn{
+      background:var(--accent);color:#fff;padding:9px 12px;border-radius:10px;border:0;font-weight:600;font-size:14px;
+      text-decoration:none;
+    }
+    .menu-toggle{display:inline-flex;align-items:center;gap:6px;padding:6px;border-radius:8px;border:0;background:transparent}
+
+    /* Hero */
+    .hero{
+      padding:18px;
+    }
+    .hero-card{
+      background:linear-gradient(180deg,#fff,#f8fbff);
+      border-radius:var(--radius);
+      padding:16px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+      box-shadow:0 8px 30px rgba(12,20,40,0.06);
+    }
+    .hero-copy{flex:1}
+    .eyebrow{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:6px}
+    .title{font-size:20px;margin:0 0 8px}
+    .desc{color:var(--muted);font-size:14px;margin:0 0 12px}
+    .ctas{display:flex;gap:8px}
+    .ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:9px 12px;border-radius:10px}
+
+    .phone-preview{
+      width:120px;height:260px;border-radius:22px;background:linear-gradient(180deg,#111827,#0b1220);
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+      box-shadow:inset 0 -20px 40px rgba(255,255,255,0.02), 0 10px 30px rgba(2,6,23,0.2);
+      flex-shrink:0;
+    }
+
+    /* Sections */
+    .section{padding:18px}
+    .grid{display:grid;gap:12px}
+    .features{grid-template-columns:repeat(2,1fr)}
+    .card{
+      background:var(--card);padding:12px;border-radius:14px;box-shadow:0 6px 20px rgba(10,14,30,0.04);
+    }
+    .specs{display:flex;flex-direction:column;gap:8px}
+    .spec{display:flex;justify-content:space-between;font-size:14px;color:var(--muted)}
+
+    /* Footer */
+    .footer{padding:18px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media(min-width:720px){
+      .hero-card{padding:24px}
+      .phone-preview{width:160px;height:320px;border-radius:26px}
+      .title{font-size:24px}
+      .features{grid-template-columns:repeat(3,1fr)}
+      .nav{gap:16px}
+    }
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <div class="logo">HP</div>
+      <div>
+        <h1>HUAPLE</h1>
+        <div style="font-size:12px;color:var(--muted)">官方旗舰 · 精简简介页</div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="主导航">
+      <button class="menu-toggle" aria-expanded="false" id="menuBtn">菜单 ▾</button>
+      <a class="btn" href="#buy">立即购买</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-copy">
+          <div class="eyebrow">新品发布</div>
+          <h2 class="title">HUAPLE X — 纤薄大电池，极速体验</h2>
+          <p class="desc">6.7" AMOLED 屏，120Hz 高刷；骁龙旗舰芯片；全天候智能电量管理，拍照更清晰。</p>
+          <div class="ctas">
+            <a class="btn" id="buy" href="#order">立即预定</a>
+            <a class="ghost" href="#specs">查看参数</a>
+          </div>
+        </div>
+        <div class="phone-preview" aria-hidden="true">
+          预览
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3 style="margin:0 0 10px">核心卖点</h3>
+      <div class="grid features">
+        <div class="card">
+          <strong>超清影像</strong>
+          <p style="margin:8px 0 0;color:var(--muted)">主摄 50MP，夜景算法升级，支持 4K 视频录制。</p>
+        </div>
+        <div class="card">
+          <strong>长续航</strong>
+          <p style="margin:8px 0 0;color:var(--muted)">5000mAh + 智能省电，典型使用 2 天以上。</p>
+        </div>
+        <div class="card">
+          <strong>高刷新率屏幕</strong>
+          <p style="margin:8px 0 0;color:var(--muted)">120Hz 自适应，为流畅操作而生。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="specs">
+      <h3 style="margin:0 0 10px">规格参数</h3>
+      <div class="card specs">
+        <div class="spec"><span>屏幕</span><span>6.7" AMOLED 120Hz</span></div>
+        <div class="spec"><span>处理器</span><span>骁龙 8 系列</span></div>
+        <div class="spec"><span>相机</span><span>50MP 主摄 + 超广 + 长焦</span></div>
+        <div class="spec"><span>电池</span><span>5000mAh，66W 快充</span></div>
+        <div class="spec"><span>系统</span><span>HeOS（基于 Android）</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="order">
+      <h3 style="margin:0 0 10px">购买与服务</h3>
+      <div class="card">
+        <p style="margin:0 0 8px;color:var(--muted)">官方渠道购买享 1 年整机质保，支持全国联保与售后上门。</p>
+        <a class="btn" href="tel:+861001234567">拨打客服</a>
+        <div style="height:12px"></div>
+        <a class="ghost" href="#" onclick="alert('感谢关注！');return false;">加入抢购提醒</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2025 HUAPLE 技术有限公司 · <a href="#" style="color:var(--accent);text-decoration:none">隐私政策</a>
+  </footer>
+
+  <script>
+    // 简单交互：菜单切换
+    (function(){
+      var btn = document.getElementById('menuBtn');
+      var open = false;
+      btn.addEventListener('click', function(){
+        open = !open;
+        btn.setAttribute('aria-expanded', String(open));
+        btn.textContent = open ? '关闭 ▴' : '菜单 ▾';
+        if(open){
+          // 在移动端显示一个简单菜单提示
+          var menu = document.createElement('div');
+          menu.id = 'tempMenu';
+          menu.style.position='fixed';
+          menu.style.right='12px';
+          menu.style.top='64px';
+          menu.style.background='#fff';
+          menu.style.padding='10px';
+          menu.style.borderRadius='10px';
+          menu.style.boxShadow='0 8px 30px rgba(2,6,23,0.12)';
+          menu.innerHTML = '<a href=\"#specs\" style=\"display:block;padding:6px 0;color:#111\">参数</a><a href=\"#order\" style=\"display:block;padding:6px 0;color:#111\">购买</a>';
+          document.body.appendChild(menu);
+        } else {
+          var m = document.getElementById('tempMenu');
+          if(m) m.remove();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
