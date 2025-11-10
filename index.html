@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUAPLE 产品系列</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#3498db',
+                        'accent-dark': '#2980b9',
+                        bg: '#f7f9fc',
+                        text: '#111827',
+                        muted: '#6b7280',
+                        card: '#ffffff',
+                    },
+                    boxShadow: {
+                        'sm': '0 2px 8px rgba(12,20,40,0.04)',
+                        'md': '0 6px 20px rgba(10,14,30,0.04)',
+                        'lg': '0 8px 30px rgba(12,20,40,0.06)',
+                        'hover': '0 12px 36px rgba(12,20,40,0.12)',
+                    },
+                    borderRadius: {
+                        'card': '12px',
+                        'btn': '8px',
+                    },
+                    transitionTimingFunction: {
+                        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
+                    }
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .bg-gradient-biaozhun {
+                background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            }
+            .bg-gradient-air {
+                background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            }
+            .bg-gradient-pro {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            }
+            .bg-gradient-pro-max {
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            }
+            .bg-gradient-ultra {
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            }
+            .badge-biaozhun {
+                background: linear-gradient(135deg, #ffecd2, #fcb69f);
+                color: #333;
+            }
+            .badge-air {
+                background: linear-gradient(135deg, #43e97b, #38f9d7);
+                color: white;
+            }
+            .badge-pro {
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+            }
+            .badge-max {
+                background: linear-gradient(135deg, #f093fb, #f5576c);
+                color: white;
+            }
+            .badge-ultra {
+                background: linear-gradient(135deg, #4facfe, #00f2fe);
+                color: white;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .phone-mockup-inner {
+                background-size: cover;
+                background-position: center;
+                width: 90%;
+                height: 90%;
+                border-radius: 30px;
+                overflow: hidden;
+                position: relative;
+            }
+            .phone-mockup-inner::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.1);
+                backdrop-filter: blur(2px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-bg text-text font-sans antialiased">
+    <!-- 白色顶部导航栏 -->
+    <!-- 修改后的导航栏（直接复制替换上面的原代码） -->
+<nav class="top-nav bg-white border-b border-gray-200 shadow-sm fixed top-0 left-0 right-0 z-50">
+    <div class="container mx-auto px-4 flex items-center justify-between h-16">
+        <!-- Logo 优化：手机端完整显示"HUA" -->
+        <a href="index.html" class="huawei-logo flex items-center font-bold text-xl text-text no-underline">
+            <img src="logo.png" alt="HUAPLE 品牌Logo" class="h-9 w-auto mr-2"> <!-- 增大Logo高度，避免截断 -->
+            <span class="text-accent inline">HUA</span>PLE <!-- 去掉hidden，手机端也显示"HUA" -->
+        </a>
+        
+        <div class="huawei-main-nav flex items-center">
+            <!-- 电脑端导航：保持不变 -->
+            <ul class="huawei-nav-links hidden md:flex list-none mr-8">
+                <li class="mx-3"><a href="service.html" class="text-text hover:text-accent transition-colors duration-300 py-2">服务支持</a></li>
+                <li class="mx-3"><a href="about.html" class="text-text hover:text-accent transition-colors duration-300 py-2">关于华凤</a></li>
+            </ul>
+            
+            <!-- 右侧功能区：手机端缩小间距，增大点击区域 -->
+            <div class="huawei-nav-utils flex items-center">
+                <a href="group.html" class="text-muted hover:text-accent transition-colors duration-300 text-sm md:text-base px-2 md:px-4">集团网站</a>
+                <a href="login.html" class="text-text hover:text-accent transition-colors duration-300 text-sm md:text-base px-2 md:px-4">登录</a>
+                <a href="register.html" class="text-text hover:text-accent transition-colors duration-300 text-sm md:text-base px-2 md:px-4">注册</a>
+                
+                <!-- 汉堡菜单：增大点击区域，添加ID用于JS控制 -->
+                <button id="mobileMenuBtn" class="md:hidden ml-2 text-text focus:outline-none p-2">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 新增：手机端下拉菜单（默认隐藏） -->
+    <div id="mobileMenu" class="md:hidden bg-white border-t border-gray-200 shadow-md hidden">
+        <ul class="py-2 px-4">
+            <li><a href="service.html" class="block py-3 text-text hover:text-accent transition-colors duration-300">服务支持</a></li>
+            <li><a href="about.html" class="block py-3 text-text hover:text-accent transition-colors duration-300">关于华凤</a></li>
+            <li><a href="group.html" class="block py-3 text-muted hover:text-accent transition-colors duration-300">集团网站</a></li>
+            <li><a href="login.html" class="block py-3 text-text hover:text-accent transition-colors duration-300">登录</a></li>
+            <li><a href="register.html" class="block py-3 text-text hover:text-accent transition-colors duration-300">注册</a></li>
+        </ul>
+    </div>
+</nav>
+    
+    <!-- 跟随导航栏 -->
+    <nav class="sticky-nav bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm fixed top-16 left-0 right-0 z-40 transition-all duration-300">
+        <div class="container mx-auto px-4 flex items-center justify-between h-12">
+            <ul class="sticky-nav-links flex list-none overflow-x-auto scrollbar-hide pb-1">
+                <li class="mx-3 whitespace-nowrap"><a href="#biaozhun" class="text-text hover:text-accent transition-colors duration-300 py-1 text-sm relative inline-block">HUAPLE 标准版</a></li>
+                <li class="mx-3 whitespace-nowrap"><a href="#air" class="text-text hover:text-accent transition-colors duration-300 py-1 text-sm relative inline-block">超凡Air</a></li>
+                <li class="mx-3 whitespace-nowrap"><a href="#pro" class="text-text hover:text-accent transition-colors duration-300 py-1 text-sm relative inline-block">HUAPLE Pro</a></li>
+                <li class="mx-3 whitespace-nowrap"><a href="#pro-max" class="text-text hover:text-accent transition-colors duration-300 py-1 text-sm relative inline-block">至尊Max</a></li>
+                <li class="mx-3 whitespace-nowrap"><a href="#ultra" class="text-text hover:text-accent transition-colors duration-300 py-1 text-sm relative inline-block">创新未来 Ultra</a></li>
+            </ul> 
+        </div>
+    </nav>
+    
+    <!-- 轮播图区域 -->
+    <section class="carousel-section pt-32 pb-16 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="carousel-container relative overflow-hidden rounded-lg shadow-lg bg-white">
+                <div class="carousel flex transition-transform duration-700 ease-smooth" id="carousel">
+                    <!-- 第一张轮播图 -->
+                    <div class="carousel-slide min-w-full flex flex-col md:flex-row">
+                        <div class="carousel-content flex-1 p-8 md:p-12 flex flex-col justify-center">
+                            <h2 class="carousel-title text-[clamp(1.75rem,4vw,2.5rem)] font-bold mb-4 text-text text-shadow">HUAPLE 智慧</h2>
+                            <p class="carousel-subtitle text-[clamp(1rem,2vw,1.25rem)] text-muted mb-8 max-w-lg">科技畅想未来，重新定义智能手机体验</p>
+                            <a href="#products" class="carousel-cta bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-md inline-flex items-center">
+                                了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <div class="carousel-image flex-1 bg-gradient-pro flex items-center justify-center text-white text-2xl font-bold p-4 min-h-[300px] md:min-h-[400px]">
+                            <div class="text-center">
+                                <i class="fa fa-microchip text-6xl mb-4 opacity-80"></i>
+                                <p>自研芯片，WX∞</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 第二张轮播图 -->
+                    <div class="carousel-slide min-w-full flex flex-col md:flex-row">
+                        <div class="carousel-content flex-1 p-8 md:p-12 flex flex-col justify-center">
+                            <h2 class="carousel-title text-[clamp(1.75rem,4vw,2.5rem)] font-bold mb-4 text-text text-shadow">HUAPLE 标准版</h2>
+                            <p class="carousel-subtitle text-[clamp(1rem,2vw,1.25rem)] text-muted mb-8 max-w-lg">均衡性能，卓越体验，超值选择</p>
+                            <a href="#biaozhun" class="carousel-cta bg-gradient-biaozhun text-text px-6 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-md inline-flex items-center">
+                                查看详情 <i class="fa fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <div class="carousel-image flex-1 bg-gradient-biaozhun flex items-center justify-center text-text text-2xl font-bold p-4 min-h-[300px] md:min-h-[400px]">
+                            <div class="text-center">
+                                <i class="fa fa-mobile text-8xl mb-4"></i>
+                                <p>标准版 展示</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 第三张轮播图 -->
+                    <div class="carousel-slide min-w-full flex flex-col md:flex-row">
+                        <div class="carousel-content flex-1 p-8 md:p-12 flex flex-col justify-center">
+                            <h2 class="carousel-title text-[clamp(1.75rem,4vw,2.5rem)] font-bold mb-4 text-text text-shadow">HUAPLE Ultra</h2>
+                            <p class="carousel-subtitle text-[clamp(1rem,2vw,1.25rem)] text-muted mb-8 max-w-lg">极限性能，创新技术，未来体验</p>
+                            <a href="#ultra" class="carousel-cta bg-gradient-ultra text-white px-6 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-md inline-flex items-center">
+                                探索创新 <i class="fa fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <div class="carousel-image flex-1 bg-gradient-ultra flex items-center justify-center text-white text-2xl font-bold p-4 min-h-[300px] md:min-h-[400px]">
+                            <div class="text-center">
+                                <i class="fa fa-rocket text-8xl mb-4"></i>
+                                <p>Ultra 创新科技</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 轮播图导航 -->
+                <button class="carousel-nav carousel-prev absolute top-1/2 -translate-y-1/2 left-4 bg-white/80 hover:bg-white border-none w-10 h-10 rounded-full flex items-center justify-center cursor-pointer z-10 transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
+                    <i class="fa fa-angle-left text-xl"></i>
+                </button>
+                <button class="carousel-nav carousel-next absolute top-1/2 -translate-y-1/2 right-4 bg-white/80 hover:bg-white border-none w-10 h-10 rounded-full flex items-center justify-center cursor-pointer z-10 transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
+                    <i class="fa fa-angle-right text-xl"></i>
+                </button>
+                
+                <div class="carousel-dots absolute bottom-6 left-0 right-0 flex justify-center gap-3">
+                    <button class="carousel-dot active w-3 h-3 rounded-full bg-black/20 hover:bg-black/40 border-none cursor-pointer transition-all duration-300 focus:outline-none" data-slide="0"></button>
+                    <button class="carousel-dot w-3 h-3 rounded-full bg-black/20 hover:bg-black/40 border-none cursor-pointer transition-all duration-300 focus:outline-none" data-slide="1"></button>
+                    <button class="carousel-dot w-3 h-3 rounded-full bg-black/20 hover:bg-black/40 border-none cursor-pointer transition-all duration-300 focus:outline-none" data-slide="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品系列展示 -->
+    <section class="product-series py-16 md:py-24" id="products">
+        <div class="container mx-auto px-4">
+            <div class="section-title text-center mb-12 md:mb-16">
+                <h2 class="text-[clamp(1.75rem,4vw,2.5rem)] font-bold mb-4 text-text">HUAPLE 产品系列</h2>
+                <!-- 删除指定段落 -->
+            </div>
+            
+            <div class="product-grid grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                <!-- 标准版 -->
+                <a href="biaozhun" class="product-card bg-card rounded-card p-6 shadow-md hover:shadow-hover transition-all duration-300 transform hover:-translate-y-2 text-decoration-none color-inherit block relative overflow-hidden group">
+                    <span class="product-badge inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 transition-all duration-300 group-hover:scale-105">标准版</span>
+                    <div class="w-16 h-16 bg-gradient-biaozhun/20 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110">
+                        <i class="fa fa-mobile text-3xl text-text"></i>
+                    </div>
+                    <h3 class="product-name text-xl font-semibold mb-2 text-text transition-colors duration-300 group-hover:text-accent">HUAPLE 标准版</h3>
+                    <p class="product-desc text-muted text-sm line-clamp-2">均衡性能，卓越体验，超值选择，旗舰级核心体验</p>
+                    <div class="absolute bottom-0 left-0 w-0 h-1 bg-accent transition-all duration-300 group-hover:w-full"></div>
+                </a>
+                
+                <!-- Air -->
+                <a href="#air" class="product-card bg-card rounded-card p-6 shadow-md hover:shadow-hover transition-all duration-300 transform hover:-translate-y-2 text-decoration-none color-inherit block relative overflow-hidden group">
+                    <span class="product-badge badge-air inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 transition-all duration-300 group-hover:scale-105">AIR</span>
+                    <div class="w-16 h-16 bg-gradient-air/20 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110">
+                        <i class="fa fa-feather text-3xl text-white"></i>
+                    </div>
+                    <h3 class="product-name text-xl font-semibold mb-2 text-text transition-colors duration-300 group-hover:text-accent">HUAPLE Air</h3>
+                    <p class="product-desc text-muted text-sm line-clamp-2">极致轻薄，全天续航，优雅设计，完美平衡性能与便携性</p>
+                    <div class="absolute bottom-0 left-0 w-0 h-1 bg-accent transition-all duration-300 group-hover:w-full"></div>
+                </a>
+                
+                <!-- Pro -->
+                <a href="#pro" class="product-card bg-card rounded-card p-6 shadow-md hover:shadow-hover transition-all duration-300 transform hover:-translate-y-2 text-decoration-none color-inherit block relative overflow-hidden group">
+                    <span class="product-badge badge-pro inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 transition-all duration-300 group-hover:scale-105">PRO</span>
+                    <div class="w-16 h-16 bg-gradient-pro/20 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110">
+                        <i class="fa fa-camera text-3xl text-white"></i>
+                    </div>
+                    <h3 class="product-name text-xl font-semibold mb-2 text-text transition-colors duration-300 group-hover:text-accent">HUAPLE Pro</h3>
+                    <p class="product-desc text-muted text-sm line-clamp-2">专业影像系统，A17 Pro芯片，钛金属设计，专业级视频拍摄能力</p>
+                    <div class="absolute bottom-0 left-0 w-0 h-1 bg-accent transition-all duration-300 group-hover:w-full"></div>
+                </a>
+                
+                <!-- Pro Max -->
+                <a href="#pro-max" class="product-card bg-card rounded-card p-6 shadow-md hover:shadow-hover transition-all duration-300 transform hover:-translate-y-2 text-decoration-none color-inherit block relative overflow-hidden group">
+                    <span class="product-badge badge-max inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 transition-all duration-300 group-hover:scale-105">PRO MAX</span>
+                    <div class="w-16 h-16 bg-gradient-pro-max/20 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110">
+                        <i class="fa fa-desktop text-3xl text-white"></i>
+                    </div>
+                    <h3 class="product-name text-xl font-semibold mb-2 text-text transition-colors duration-300 group-hover:text-accent">HUAPLE Pro Max</h3>
+                    <p class="product-desc text-muted text-sm line-clamp-2">超大屏幕，极致性能，专业级视频拍摄与编辑，全天候电池续航</p>
+                    <div class="absolute bottom-0 left-0 w-0 h-1 bg-accent transition-all duration-300 group-hover:w-full"></div>
+                </a>
+                
+                <!-- Ultra -->
+                <a href="#ultra" class="product-card bg-card rounded-card p-6 shadow-md hover:shadow-hover transition-all duration-300 transform hover:-translate-y-2 text-decoration-none color-inherit block relative overflow-hidden group">
+                    <span class="product-badge badge-ultra inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 transition-all duration-300 group-hover:scale-105">ULTRA</span>
+                    <div class="w-16 h-16 bg-gradient-ultra/20 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110">
+                        <i class="fa fa-rocket text-3xl text-white"></i>
+                    </div>
+                    <h3 class="product-name text-xl font-semibold mb-2 text-text transition-colors duration-300 group-hover:text-accent">HUAPLE Ultra</h3>
+                    <p class="product-desc text-muted text-sm line-clamp-2">极限性能，创新技术，未来体验，重新定义智能手机的可能性</p>
+                    <div class="absolute bottom-0 left-0 w-0 h-1 bg-accent transition-all duration-300 group-hover:w-full"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 标准版型号页面 -->
+    <section id="biaozhun" class="product-detail py-20 md:py-28 bg-gradient-biaozhun text-text">
+        <div class="container mx-auto px-4">
+            <div class="product-hero text-center mb-12 md:mb-16">
+                <span class="product-hero-badge inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-white/20 backdrop-blur-sm">标准版</span>
+                <h2 class="text-[clamp(2rem,5vw,3rem)] font-bold mb-4">HUAPLE 标准版</h2>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] opacity-90 max-w-2xl mx-auto">均衡性能，卓越体验，超值选择</p>
+            </div>
+            
+            <div class="product-features grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="product-info order-2 md:order-1">
+                    <h3 class="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">均衡之选，卓越体验</h3>
+                    <p class="text-lg opacity-90 mb-8 leading-relaxed">完美平衡性能与价格，提供旗舰级核心体验，满足日常使用和专业需求的完美结合。</p>
+                    <ul class="feature-list list-none space-y-4">
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:text-white">
+                            <i class="fa fa-check absolute left-0 top-3 text-accent-dark"></i>
+                            WX∞ Bionic芯片，性能强劲，能效卓越
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:text-white">
+                            <i class="fa fa-check absolute left-0 top-3 text-accent-dark"></i>
+                            6.1英寸超视网膜XDR显示屏，色彩精准
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:text-white">
+                            <i class="fa fa-check absolute left-0 top-3 text-accent-dark"></i>
+                            双摄系统，人像模式出色，夜景增强
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:text-white">
+                            <i class="fa fa-check absolute left-0 top-3 text-accent-dark"></i>
+                            超值价格，旗舰体验，性价比之选
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:text-white">
+                            <i class="fa fa-check absolute left-0 top-3 text-accent-dark"></i>
+                            全天候电池续航，支持快充技术
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:text-white">
+                            <i class="fa fa-check absolute left-0 top-3 text-accent-dark"></i>
+                            五款时尚配色，满足个性需求
+                        </li>
+                    </ul>
+                </div>
+                <div class="product-image order-1 md:order-2">
+                    <div class="phone-mockup w-64 md:w-72 h-[560px] md:h-[600px] bg-gray-900 rounded-[40px] mx-auto flex items-center justify-center shadow-2xl relative overflow-hidden transform transition-all duration-500 hover:scale-[1.02]">
+                        <div class="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-10"></div>
+                        <div class="phone-mockup-inner bg-gradient-biaozhun flex items-center justify-center">
+                            <span class="text-white text-xl font-bold z-10">标准版</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-cta text-center mt-12 md:mt-16">
+                <a href="#buy" class="btn btn-large bg-text text-white px-8 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg inline-flex items-center gap-2">
+                    <i class="fa fa-shopping-cart"></i> 立即购买
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Air 型号页面 -->
+    <section id="air" class="product-detail py-20 md:py-28 bg-gradient-air text-white">
+        <div class="container mx-auto px-4">
+            <div class="product-hero text-center mb-12 md:mb-16">
+                <span class="product-hero-badge inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-white/20 backdrop-blur-sm">AIR</span>
+                <h2 class="text-[clamp(2rem,5vw,3rem)] font-bold mb-4">HUAPLE Air</h2>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] opacity-90 max-w-2xl mx-auto">极致轻薄，全天续航，优雅设计</p>
+            </div>
+            
+            <div class="product-features grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="product-info">
+                    <h3 class="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">轻盈设计，强大性能</h3>
+                    <p class="text-lg opacity-90 mb-8 leading-relaxed">仅6.1mm厚度，重量不足170g，却拥有全天候电池续航，完美平衡便携性与性能。</p>
+                    <ul class="feature-list list-none space-y-4">
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            WX∞ Bionic芯片，能效卓越，性能强劲
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            仅6.1mm厚度，重量不足170g，极致轻薄
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            全天候电池续航，支持无线充电
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            五款时尚配色可选，满足个性表达
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            超视网膜OLED显示屏，色彩鲜艳
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            高级铝合金框架，轻盈坚固
+                        </li>
+                    </ul>
+                </div>
+                <div class="product-image">
+                    <div class="phone-mockup w-64 md:w-72 h-[560px] md:h-[600px] bg-gray-900 rounded-[40px] mx-auto flex items-center justify-center shadow-2xl relative overflow-hidden transform transition-all duration-500 hover:scale-[1.02]">
+                        <div class="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-10"></div>
+                        <div class="phone-mockup-inner bg-gradient-air flex items-center justify-center">
+                            <span class="text-white text-xl font-bold z-10">Air</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-cta text-center mt-12 md:mt-16">
+                <a href="#buy" class="btn btn-large bg-white text-[#43e97b] px-8 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg inline-flex items-center gap-2">
+                    <i class="fa fa-shopping-cart"></i> 立即购买
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pro 型号页面 -->
+    <section id="pro" class="product-detail py-20 md:py-28 bg-gradient-pro text-white">
+        <div class="container mx-auto px-4">
+            <div class="product-hero text-center mb-12 md:mb-16">
+                <span class="product-hero-badge inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-white/20 backdrop-blur-sm">PRO</span>
+                <h2 class="text-[clamp(2rem,5vw,3rem)] font-bold mb-4">HUAPLE Pro</h2>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] opacity-90 max-w-2xl mx-auto">专业影像系统，A17 Pro芯片，钛金属设计</p>
+            </div>
+            
+            <div class="product-features grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="product-info order-2 md:order-1">
+                    <h3 class="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">专业级影像系统</h3>
+                    <p class="text-lg opacity-90 mb-8 leading-relaxed">搭载三摄系统，主摄4800万像素，支持ProRAW格式，专业级视频拍摄能力，满足专业摄影师和视频创作者的苛刻需求。</p>
+                    <ul class="feature-list list-none space-y-4">
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            WX∞ Pro芯片，性能提升20%，能效优化30%
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            钛金属边框，轻盈坚固，高级质感
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            专业级影像处理引擎，实时计算摄影
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            全天候显示，峰值亮度2000尼特
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            5倍光学变焦，超广角夜景模式
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            专业级视频拍摄，支持4K 60fps HDR
+                        </li>
+                    </ul>
+                </div>
+                <div class="product-image order-1 md:order-2">
+                    <div class="phone-mockup w-64 md:w-72 h-[560px] md:h-[600px] bg-gray-900 rounded-[40px] mx-auto flex items-center justify-center shadow-2xl relative overflow-hidden transform transition-all duration-500 hover:scale-[1.02]">
+                        <div class="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-10"></div>
+                        <div class="phone-mockup-inner bg-gradient-pro flex items-center justify-center">
+                            <span class="text-white text-xl font-bold z-10">Pro</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-cta text-center mt-12 md:mt-16">
+                <a href="#buy" class="btn btn-large bg-white text-[#667eea] px-8 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg inline-flex items-center gap-2">
+                    <i class="fa fa-shopping-cart"></i> 立即购买
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pro Max 型号页面 -->
+    <section id="pro-max" class="product-detail py-20 md:py-28 bg-gradient-pro-max text-white">
+        <div class="container mx-auto px-4">
+            <div class="product-hero text-center mb-12 md:mb-16">
+                <span class="product-hero-badge inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-white/20 backdrop-blur-sm">PRO MAX</span>
+                <h2 class="text-[clamp(2rem,5vw,3rem)] font-bold mb-4">HUAPLE Pro Max</h2>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] opacity-90 max-w-2xl mx-auto">超大屏幕，极致性能，专业级视频拍摄</p>
+            </div>
+            
+            <div class="product-features grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="product-info">
+                    <h3 class="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">极致大屏体验</h3>
+                    <p class="text-lg opacity-90 mb-8 leading-relaxed">6.9英寸超视网膜XDR显示屏，专业级视频拍摄与编辑能力，为内容创作者和专业人士打造的无缝工作流程。</p>
+                    <ul class="feature-list list-none space-y-4">
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            WX∞ Pro芯片，性能巅峰，能效卓越
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            6.9英寸超视网膜XDR显示屏，ProMotion技术
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            专业级视频拍摄与编辑，电影效果模式
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            最长电池续航，支持全天重度使用
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            1TB超大存储空间，满足专业需求
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            5G超高速连接，低延迟体验
+                        </li>
+                    </ul>
+                </div>
+                <div class="product-image">
+                    <div class="phone-mockup w-72 md:w-80 h-[600px] md:h-[640px] bg-gray-900 rounded-[44px] mx-auto flex items-center justify-center shadow-2xl relative overflow-hidden transform transition-all duration-500 hover:scale-[1.02]">
+                        <div class="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-5 bg-black rounded-full z-10"></div>
+                        <div class="phone-mockup-inner bg-gradient-pro-max flex items-center justify-center">
+                            <span class="text-white text-xl font-bold z-10">Pro Max</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-cta text-center mt-12 md:mt-16">
+                <a href="#buy" class="btn btn-large bg-white text-[#f5576c] px-8 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg inline-flex items-center gap-2">
+                    <i class="fa fa-shopping-cart"></i> 立即购买
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ultra 型号页面 -->
+    <section id="ultra" class="product-detail py-20 md:py-28 bg-gradient-ultra text-white">
+        <div class="container mx-auto px-4">
+            <div class="product-hero text-center mb-12 md:mb-16">
+                <span class="product-hero-badge inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-white/20 backdrop-blur-sm">ULTRA</span>
+                <h2 class="text-[clamp(2rem,5vw,3rem)] font-bold mb-4">HUAPLE Ultra</h2>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] opacity-90 max-w-2xl mx-auto">极限性能，创新技术，未来体验</p>
+            </div>
+            
+            <div class="product-features grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="product-info order-2 md:order-1">
+                    <h3 class="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">突破性技术创新</h3>
+                    <p class="text-lg opacity-90 mb-8 leading-relaxed">搭载革命性处理器和影像系统，重新定义智能手机的可能性，为科技爱好者和先锋用户打造的终极设备。</p>
+                    <ul class="feature-list list-none space-y-4">
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            WX∞ Ultra芯片，性能提升40%，AI算力翻倍
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            钛合金陶瓷复合材质，极致耐用
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            2亿像素主摄像头，8K视频录制
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            卫星通信紧急求救功能，全球覆盖
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            折叠屏技术，多任务无缝切换
+                        </li>
+                        <li class="text-base relative pl-8 py-2 border-b border-white/10 last:border-0 transition-all duration-300 hover:pl-9 hover:bg-white/5">
+                            <i class="fa fa-check absolute left-0 top-3 text-white"></i>
+                            200W超级快充，15分钟充满
+                        </li>
+                    </ul>
+                </div>
+                <div class="product-image order-1 md:order-2">
+                    <div class="phone-mockup w-72 md:w-80 h-[600px] md:h-[640px] bg-gray-900 rounded-[44px] mx-auto flex items-center justify-center shadow-2xl relative overflow-hidden transform transition-all duration-500 hover:scale-[1.02]">
+                        <div class="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-5 bg-black rounded-full z-10"></div>
+                        <div class="phone-mockup-inner bg-gradient-ultra flex items-center justify-center">
+                            <span class="text-white text-xl font-bold z-10">Ultra</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-cta text-center mt-12 md:mt-16">
+                <a href="#buy" class="btn btn-large bg-white text-[#4facfe] px-8 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg inline-flex items-center gap-2">
+                    <i class="fa fa-shopping-cart"></i> 立即购买
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 购买区域 -->
+    <section id="buy" class="buy-section py-16 md:py-24 bg-bg">
+        <div class="container mx-auto px-4">
+            <div class="section-title text-center mb-12 md:mb-16">
+                <h2 class="text-[clamp(1.75rem,4vw,2.5rem)] font-bold mb-4 text-text">选择您的 HUAPLE</h2>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-muted max-w-2xl mx-auto">探索我们的产品系列，找到最适合您的智能手机</p>
+            </div>
+            
+            <div class="buy-options flex flex-wrap gap-4 justify-center">
+                <a href="#biaozhun" class="btn px-6 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md badge-biaozhun">
+                    <i class="fa fa-mobile mr-2"></i> HUAPLE 标准版
+                </a>
+                <a href="#air" class="btn px-6 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md badge-air">
+                    <i class="fa fa-feather mr-2"></i> HUAPLE Air
+                </a>
+                <a href="#pro" class="btn px-6 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md badge-pro">
+                    <i class="fa fa-camera mr-2"></i> HUAPLE Pro
+                </a>
+                <a href="#pro-max" class="btn px-6 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md badge-max">
+                    <i class="fa fa-desktop mr-2"></i> HUAPLE Pro Max
+                </a>
+                <a href="#ultra" class="btn px-6 py-3 rounded-btn font-semibold text-decoration-none transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md badge-ultra">
+                    <i class="fa fa-rocket mr-2"></i> HUAPLE Ultra
+                </a>
+            </div>
+            
+            <div class="mt-12 md:mt-16 bg-white rounded-xl shadow-md p-6 md:p-8 max-w-3xl mx-auto">
+                <h3 class="text-xl font-semibold mb-4 text-text">预约专属顾问</h3>
+                <p class="text-muted mb-6">填写以下信息，我们的产品顾问将尽快与您联系，为您提供一对一的购买咨询服务</p>
+                <form class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-muted mb-1">姓名</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-300 outline-none" placeholder="请输入您的姓名">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-muted mb-1">电话</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-300 outline-none" placeholder="请输入您的手机号码">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="product" class="block text-sm font-medium text-muted mb-1">意向产品</label>
+                        <select id="product" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-300 outline-none">
+                            <option value="">请选择意向产品</option>
+                            <option value="biaozhun">HUAPLE 标准版</option>
+                            <option value="air">HUAPLE Air</option>
+                            <option value="pro">HUAPLE Pro</option>
+                            <option value="pro-max">HUAPLE Pro Max</option>
+                            <option value="ultra">HUAPLE Ultra</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-muted mb-1">备注信息</label>
+                        <textarea id="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-300 outline-none" placeholder="如有特殊需求，请在此说明"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
+                        提交预约
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer bg-gray-900 text-white py-12 md:py-16">
+        <div class="container mx-auto px-4">
+            <div class="footer-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+                <div class="footer-column">
+                    <h3 class="text-lg font-semibold mb-4">产品</h3>
+                    <ul class="footer-links space-y-2">
+                        <li><a href="#biaozhun" class="text-gray-400 hover:text-white transition-colors duration-300">HUAPLE 标准版</a></li>
+                        <li><a href="#air" class="text-gray-400 hover:text-white transition-colors duration-300">HUAPLE Air</a></li>
+                        <li><a href="#pro" class="text-gray-400 hover:text-white transition-colors duration-300">HUAPLE Pro</a></li>
+                        <li><a href="#pro-max" class="text-gray-400 hover:text-white transition-colors duration-300">HUAPLE Pro Max</a></li>
+                        <li><a href="#ultra" class="text-gray-400 hover:text-white transition-colors duration-300">HUAPLE Ultra</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="text-lg font-semibold mb-4">服务与支持</h3>
+                    <ul class="footer-links space-y-2">
+                        <li><a href="service.html" class="text-gray-400 hover:text-white transition-colors duration-300">HUAPLE 支持</a></li>
+                        <li><a href="service.html" class="text-gray-400 hover:text-white transition-colors duration-300">维修服务</a></li>
+                        <li><a href="service.html" class="text-gray-400 hover:text-white transition-colors duration-300">使用技巧</a></li>
+                        <li><a href="service.html" class="text-gray-400 hover:text-white transition-colors duration-300">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="text-lg font-semibold mb-4">关于华凤</h3>
+                    <ul class="footer-links space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors duration-300">新闻中心</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors duration-300">招贤纳士</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors duration-300">企业责任</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors duration-300">投资者关系</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="text-lg font-semibold mb-4">购物相关</h3>
+                    <ul class="footer-links space-y-2">
+                        <li><a href="login.html" class="text-gray-400 hover:text-white transition-colors duration-300">查找零售店</a></li>
+                        <li><a href="login.html" class="text-gray-400 hover:text-white transition-colors duration-300">订单状态</a></li>
+                        <li><a href="login.html" class="text-gray-400 hover:text-white transition-colors duration-300">配送方式</a></li>
+                        <li><a href="login.html" class="text-gray-400 hover:text-white transition-colors duration-300">购物帮助</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 my-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <a href="#" class="flex items-center font-bold text-xl text-white no-underline">
+                            <span class="text-accent">HUA</span>PLE
+                        </a>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-accent flex items-center justify-center transition-all duration-300">
+                            <i class="fa fa-weibo text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-accent flex items-center justify-center transition-all duration-300">
+                            <i class="fa fa-wechat text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-accent flex items-center justify-center transition-all duration-300">
+                            <i class="fa fa-instagram text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-accent flex items-center justify-center transition-all duration-300">
+                            <i class="fa fa-youtube-play text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom text-center text-gray-500 text-sm">
+                <p>© 2025 HUAPLE 技术有限公司 保留所有权利。</p>
+                <div class="mt-3">
+                    <a href="#" class="hover:text-gray-300 transition-colors duration-300">隐私政策</a> · 
+                    <a href="#" class="hover:text-gray-300 transition-colors duration-300">服务条款</a> · 
+                    <a href="#" class="hover:text-gray-300 transition-colors duration-300">法律信息</a> · 
+                    <a href="#" class="hover:text-gray-300 transition-colors duration-300">网站地图</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-accent hover:bg-accent-dark text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 transform scale-0 hover:scale-105 focus:outline-none z-50">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 轮播图功能
+        const carousel = document.getElementById('carousel');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        
+        let currentSlide = 0;
+        const slideCount = slides.length;
+        let autoSlideInterval;
+        
+        // 切换到指定幻灯片
+        function goToSlide(n) {
+            currentSlide = (n + slideCount) % slideCount;
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // 更新指示点状态
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+                dot.classList.toggle('bg-accent', index === currentSlide);
+                dot.classList.toggle('w-6', index === currentSlide);
+            });
+        }
+        
+        // 下一张幻灯片
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+        
+        // 上一张幻灯片
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+        
+        // 自动轮播
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+        
+        // 事件监听
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+                stopAutoSlide();
+                startAutoSlide();
+            });
+        });
+        
+        // 鼠标悬停时暂停自动轮播
+        carousel.addEventListener('mouseenter', stopAutoSlide);
+        carousel.addEventListener('mouseleave', startAutoSlide);
+        
+        // 初始化轮播图
+        startAutoSlide();
+
+        // 跟随导航栏功能
+        const stickyNav = document.querySelector('.sticky-nav');
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+        
+        function updateStickyNav() {
+            if (window.scrollY > 100) {
+                if (window.scrollY > lastScrollY) {
+                    // 向下滚动，隐藏导航栏
+                    stickyNav.classList.add('translate-y-[-100%]');
+                } else {
+                    // 向上滚动，显示导航栏
+                    stickyNav.classList.remove('translate-y-[-100%]');
+                }
+            } else {
+                stickyNav.classList.remove('translate-y-[-100%]');
+            }
+            
+            lastScrollY = window.scrollY;
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateStickyNav);
+                ticking = true;
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 回到顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.replace('scale-0', 'scale-100');
+            } else {
+                backToTopBtn.classList.replace('scale-100', 'scale-0');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 导航链接下划线动画
+        document.querySelectorAll('a[href^="#"], .huawei-nav-links a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.classList.add('after:width-full');
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.classList.remove('after:width-full');
+            });
+        });
+
+        // 产品卡片悬停效果增强
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.classList.add('shadow-hover', '-translate-y-2');
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.classList.remove('shadow-hover', '-translate-y-2');
+            });
+        });
+            // 手机端导航菜单展开/收起（直接复制粘贴）
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden'); // 点击显示/隐藏菜单
+        // 切换图标（菜单 ↔ 关闭）
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+        // 表单提交处理
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 简单的表单验证
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const product = document.getElementById('product').value;
+            
+            if (!name || !phone || !product) {
+                alert('请填写完整的预约信息');
+                return;
+            }
+            
+            // 模拟提交成功
+            alert('预约提交成功！我们的产品顾问将尽快与您联系');
+            this.reset();
+        });
+    </script>
+    
+</body>
+</html>
